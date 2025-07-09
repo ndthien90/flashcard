@@ -1162,166 +1162,156 @@ body {
                 this.cleanupAnimation();
             }
 
-createGridBackground(svg, size) {
-    // Create defs for reusable elements
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    svg.appendChild(defs);
-    
-    // Grid pattern for small grid lines - điều chỉnh để khớp với size
-    const gridSize = Math.max(20, size / 15); // Tạo khoảng 15 ô grid
-    const pattern = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
-    pattern.setAttribute('id', 'grid');
-    pattern.setAttribute('width', gridSize);
-    pattern.setAttribute('height', gridSize);
-    pattern.setAttribute('patternUnits', 'userSpaceOnUse');
-    
-    // Small grid lines
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', `M ${gridSize} 0 L 0 0 0 ${gridSize}`);
-    path.setAttribute('fill', 'none');
-    path.setAttribute('stroke', '#f0f0f0');
-    path.setAttribute('stroke-width', '0.5');
-    pattern.appendChild(path);
-    defs.appendChild(pattern);
-    
-    // Background rectangle with grid pattern
-    const gridRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    gridRect.setAttribute('width', size);
-    gridRect.setAttribute('height', size);
-    gridRect.setAttribute('fill', 'url(#grid)');
-    gridRect.setAttribute('x', '0');
-    gridRect.setAttribute('y', '0');
-    svg.appendChild(gridRect);
-    
-    // Main cross lines (center guidelines) - chính xác ở giữa
-    const centerX = size / 2;
-    const centerY = size / 2;
-    
-    const centerV = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    centerV.setAttribute('x1', centerX);
-    centerV.setAttribute('y1', 0);
-    centerV.setAttribute('x2', centerX);
-    centerV.setAttribute('y2', size);
-    centerV.setAttribute('stroke', '#ddd');
-    centerV.setAttribute('stroke-width', '1');
-    centerV.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(centerV);
-    
-    const centerH = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    centerH.setAttribute('x1', 0);
-    centerH.setAttribute('y1', centerY);
-    centerH.setAttribute('x2', size);
-    centerH.setAttribute('y2', centerY);
-    centerH.setAttribute('stroke', '#ddd');
-    centerH.setAttribute('stroke-width', '1');
-    centerH.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(centerH);
-    
-    // Diagonal guidelines (traditional Chinese character writing guidelines)
-    const diag1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    diag1.setAttribute('x1', 0);
-    diag1.setAttribute('y1', 0);
-    diag1.setAttribute('x2', size);
-    diag1.setAttribute('y2', size);
-    diag1.setAttribute('stroke', '#e8e8e8');
-    diag1.setAttribute('stroke-width', '0.8');
-    diag1.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(diag1);
-    
-    const diag2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    diag2.setAttribute('x1', size);
-    diag2.setAttribute('y1', 0);
-    diag2.setAttribute('x2', 0);
-    diag2.setAttribute('y2', size);
-    diag2.setAttribute('stroke', '#e8e8e8');
-    diag2.setAttribute('stroke-width', '0.8');
-    diag2.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(diag2);
-}
+            createGridBackground(svg, size) {
+                // Create defs for reusable elements
+                const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+                svg.appendChild(defs);
+                
+                // Grid pattern for small grid lines
+                const pattern = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
+                pattern.setAttribute('id', 'grid');
+                pattern.setAttribute('width', '20');
+                pattern.setAttribute('height', '20');
+                pattern.setAttribute('patternUnits', 'userSpaceOnUse');
+                
+                // Small grid lines
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', 'M 20 0 L 0 0 0 20');
+                path.setAttribute('fill', 'none');
+                path.setAttribute('stroke', '#f0f0f0');
+                path.setAttribute('stroke-width', '0.5');
+                pattern.appendChild(path);
+                defs.appendChild(pattern);
+                
+                // Background rectangle with grid pattern
+                const gridRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                gridRect.setAttribute('width', size);
+                gridRect.setAttribute('height', size);
+                gridRect.setAttribute('fill', 'url(#grid)');
+                svg.appendChild(gridRect);
+                
+                // Main cross lines (center guidelines)
+                const centerV = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                centerV.setAttribute('x1', size / 2);
+                centerV.setAttribute('y1', 0);
+                centerV.setAttribute('x2', size / 2);
+                centerV.setAttribute('y2', size);
+                centerV.setAttribute('stroke', '#ddd');
+                centerV.setAttribute('stroke-width', '1');
+                svg.appendChild(centerV);
+                
+                const centerH = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                centerH.setAttribute('x1', 0);
+                centerH.setAttribute('y1', size / 2);
+                centerH.setAttribute('x2', size);
+                centerH.setAttribute('y2', size / 2);
+                centerH.setAttribute('stroke', '#ddd');
+                centerH.setAttribute('stroke-width', '1');
+                svg.appendChild(centerH);
+                
+                // Diagonal guidelines (traditional Chinese character writing guidelines)
+                const diag1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                diag1.setAttribute('x1', 0);
+                diag1.setAttribute('y1', 0);
+                diag1.setAttribute('x2', size);
+                diag1.setAttribute('y2', size);
+                diag1.setAttribute('stroke', '#e8e8e8');
+                diag1.setAttribute('stroke-width', '0.8');
+                svg.appendChild(diag1);
+                
+                const diag2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                diag2.setAttribute('x1', size);
+                diag2.setAttribute('y1', 0);
+                diag2.setAttribute('x2', 0);
+                diag2.setAttribute('y2', size);
+                diag2.setAttribute('stroke', '#e8e8e8');
+                diag2.setAttribute('stroke-width', '0.8');
+                svg.appendChild(diag2);
+            }
 
-async initializeAnimation(character, showLoading = true) {
-    if (showLoading) {
-        this.setLoadingState(true);
-    }
-    
-    try {
-        // Fast cleanup without delay for character switching
-        this.cleanupAnimationFast();
-        
-        // Only wait if this is the initial load
-        if (showLoading) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
-        
-        // Get target element and check if it's visible
-        const target = document.getElementById('animationTarget');
-        if (!target || !target.offsetParent) {
-            throw new Error('Animation target not visible');
-        }
-        
-        // Calculate responsive size based on viewport and container
-        const modalContent = target.closest('.modal-content');
-        const availableWidth = modalContent ? modalContent.offsetWidth - 60 : window.innerWidth - 60;
-        const availableHeight = window.innerHeight - 300; // Leave space for other elements
-        
-        // Mobile-first approach: use more screen space on mobile
-        const isMobile = window.innerWidth <= 768;
-        const baseSize = isMobile ? 
-            Math.min(availableWidth, availableHeight, 350) : 
-            Math.min(availableWidth, availableHeight, 400);
-        const targetSize = Math.max(baseSize, isMobile ? 240 : 200);
-        
-        // Set target size
-        target.style.width = targetSize + 'px';
-        target.style.height = targetSize + 'px';
-        
-        // Calculate padding - giảm padding để có nhiều không gian hơn cho grid
-        const padding = isMobile ? 10 : 15;
-        const svgSize = targetSize - (padding * 2);
-        
-        // Create SVG với kích thước chính xác
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('width', svgSize);
-        svg.setAttribute('height', svgSize);
-        svg.setAttribute('viewBox', `0 0 ${svgSize} ${svgSize}`);
-        svg.setAttribute('id', 'hanzi-svg-target');
-        svg.style.width = svgSize + 'px';
-        svg.style.height = svgSize + 'px';
-        svg.style.border = '1px solid #eee';
-        svg.style.borderRadius = '10px';
-        svg.style.background = 'white';
-        svg.style.display = 'block';
-        
-        // Create grid background TRƯỚC khi tạo HanziWriter
-        this.createGridBackground(svg, svgSize);
-        
-        // Clear and append SVG to target
-        target.innerHTML = '';
-        target.appendChild(svg);
-        
-        // Create HanziWriter với padding 0 vì chúng ta đã tính padding trong SVG
-        this.animationWriter = HanziWriter.create('hanzi-svg-target', character, {
-            width: svgSize,
-            height: svgSize,
-            padding: 20, // Padding nhỏ để HanziWriter không vẽ quá sát biên
-            strokeAnimationSpeed: 1,
-            delayBetweenStrokes: 800,
-            strokeColor: '#e74c3c',
-            radicalColor: '#3498db',
-            outlineColor: '#bdc3c7',
-            showOutline: true,
-            showCharacter: true
-        });
-        
-    } catch (error) {
-        console.error('Animation initialization error:', error);
-        this.showFeedback(`<span class="chinese-text">初始化动画失败</span>: ${error.message}`, 'error');
-    } finally {
-        if (showLoading) {
-            this.setLoadingState(false);
-        }
-    }
-}
+            async initializeAnimation(character, showLoading = true) {
+                if (showLoading) {
+                    this.setLoadingState(true);
+                }
+                
+                try {
+                    // Fast cleanup without delay for character switching
+                    this.cleanupAnimationFast();
+                    
+                    // Only wait if this is the initial load
+                    if (showLoading) {
+                        await new Promise(resolve => setTimeout(resolve, 50));
+                    }
+                    
+                    // Get target element and check if it's visible
+                    const target = document.getElementById('animationTarget');
+                    if (!target || !target.offsetParent) {
+                        throw new Error('Animation target not visible');
+                    }
+                    
+                    // Calculate responsive size based on viewport and container
+                    const modalContent = target.closest('.modal-content');
+                    const availableWidth = modalContent ? modalContent.offsetWidth - 60 : window.innerWidth - 60;
+                    const availableHeight = window.innerHeight - 300; // Leave space for other elements
+                    
+                    // Mobile-first approach: use more screen space on mobile
+                    const isMobile = window.innerWidth <= 768;
+                    const baseSize = isMobile ? 
+                        Math.min(availableWidth, availableHeight, 350) : 
+                        Math.min(availableWidth, availableHeight, 400);
+                    const targetSize = Math.max(baseSize, isMobile ? 240 : 200); // Larger minimum for mobile
+                    
+                    // Set target size
+                    target.style.width = targetSize + 'px';
+                    target.style.height = targetSize + 'px';
+                    
+                    // Calculate padding based on size - smaller padding on mobile for more drawing space
+                    const padding = isMobile ? 
+                        Math.max(targetSize * 0.03, 8) : 
+                        Math.max(targetSize * 0.05, 10);
+                    const drawingSize = targetSize - (padding * 2);
+                    
+                    // Create SVG with grid background
+                    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    svg.setAttribute('width', drawingSize);
+                    svg.setAttribute('height', drawingSize);
+                    svg.setAttribute('id', 'hanzi-svg-target');
+                    svg.style.width = drawingSize + 'px';
+                    svg.style.height = drawingSize + 'px';
+                    svg.style.border = '1px solid #eee';
+                    svg.style.borderRadius = '10px';
+                    svg.style.background = 'white';
+                    
+                    // Create grid background
+                    this.createGridBackground(svg, drawingSize);
+                    
+                    // Clear and append SVG to target
+                    target.innerHTML = '';
+                    target.appendChild(svg);
+                    
+                    // Create HanziWriter using the SVG element
+                    this.animationWriter = HanziWriter.create('hanzi-svg-target', character, {
+                        width: drawingSize,
+                        height: drawingSize,
+                        padding: padding,
+                        strokeAnimationSpeed: 1,
+                        delayBetweenStrokes: 800,
+                        strokeColor: '#e74c3c',
+                        radicalColor: '#3498db',
+                        outlineColor: '#bdc3c7',
+                        showOutline: true,
+                        showCharacter: true
+                    });
+                    
+                } catch (error) {
+                    console.error('Animation initialization error:', error);
+                    this.showFeedback(`<span class="chinese-text">初始化动画失败</span>: ${error.message}`, 'error');
+                } finally {
+                    if (showLoading) {
+                        this.setLoadingState(false);
+                    }
+                }
+            }
 
             cleanupAnimationFast() {
                 if (this.animationWriter) {
