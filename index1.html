@@ -434,6 +434,8 @@ body {
 }
 
 .hanzi-target {
+    width: 300px;
+    height: 300px;
     border: 3px solid #e74c3c;
     border-radius: 15px;
     background: white;
@@ -445,11 +447,37 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
 }
 
 .hanzi-target svg {
-    border-radius: 10px;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.hanzi-target::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: #ddd;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hanzi-target::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    bottom: 5%;
+    width: 1px;
+    background: #ddd;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .panel-title {
@@ -561,6 +589,12 @@ body {
         font-size: 3.5em;
     }
     
+    .hanzi-target {
+        width: min(350px, calc(100vw - 40px));
+        height: min(350px, calc(100vw - 40px));
+        margin: 15px auto;
+    }
+    
     .current-word {
         font-size: 2.5em;
     }
@@ -669,6 +703,12 @@ body {
         font-size: 1.2em;
     }
 
+    .hanzi-target {
+        width: min(280px, calc(100vw - 50px));
+        height: min(280px, calc(100vw - 50px));
+        margin: 10px auto;
+    }
+
     .character-tabs {
         flex-direction: row !important;
         justify-content: center !important;
@@ -716,6 +756,12 @@ body {
         min-height: 35px;
         font-size: 0.8em;
         padding: 6px 10px;
+    }
+    
+    .hanzi-target {
+        width: min(240px, calc(100vw - 40px));
+        height: min(240px, calc(100vw - 40px));
+        margin: 8px auto;
     }
     
     .progress-bar {
@@ -1162,73 +1208,6 @@ body {
                 this.cleanupAnimation();
             }
 
-            createGridBackground(svg, size) {
-                // Create defs for reusable elements
-                const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-                svg.appendChild(defs);
-                
-                // Grid pattern for small grid lines
-                const pattern = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
-                pattern.setAttribute('id', 'grid');
-                pattern.setAttribute('width', '20');
-                pattern.setAttribute('height', '20');
-                pattern.setAttribute('patternUnits', 'userSpaceOnUse');
-                
-                // Small grid lines
-                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                path.setAttribute('d', 'M 20 0 L 0 0 0 20');
-                path.setAttribute('fill', 'none');
-                path.setAttribute('stroke', '#f0f0f0');
-                path.setAttribute('stroke-width', '0.5');
-                pattern.appendChild(path);
-                defs.appendChild(pattern);
-                
-                // Background rectangle with grid pattern
-                const gridRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                gridRect.setAttribute('width', size);
-                gridRect.setAttribute('height', size);
-                gridRect.setAttribute('fill', 'url(#grid)');
-                svg.appendChild(gridRect);
-                
-                // Main cross lines (center guidelines)
-                const centerV = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                centerV.setAttribute('x1', size / 2);
-                centerV.setAttribute('y1', 0);
-                centerV.setAttribute('x2', size / 2);
-                centerV.setAttribute('y2', size);
-                centerV.setAttribute('stroke', '#ddd');
-                centerV.setAttribute('stroke-width', '1');
-                svg.appendChild(centerV);
-                
-                const centerH = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                centerH.setAttribute('x1', 0);
-                centerH.setAttribute('y1', size / 2);
-                centerH.setAttribute('x2', size);
-                centerH.setAttribute('y2', size / 2);
-                centerH.setAttribute('stroke', '#ddd');
-                centerH.setAttribute('stroke-width', '1');
-                svg.appendChild(centerH);
-                
-                // Diagonal guidelines (traditional Chinese character writing guidelines)
-                const diag1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                diag1.setAttribute('x1', 0);
-                diag1.setAttribute('y1', 0);
-                diag1.setAttribute('x2', size);
-                diag1.setAttribute('y2', size);
-                diag1.setAttribute('stroke', '#e8e8e8');
-                diag1.setAttribute('stroke-width', '0.8');
-                svg.appendChild(diag1);
-                
-                const diag2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                diag2.setAttribute('x1', size);
-                diag2.setAttribute('y1', 0);
-                diag2.setAttribute('x2', 0);
-                diag2.setAttribute('y2', size);
-                diag2.setAttribute('stroke', '#e8e8e8');
-                diag2.setAttribute('stroke-width', '0.8');
-                svg.appendChild(diag2);
-            }
-
             async initializeAnimation(character, showLoading = true) {
                 if (showLoading) {
                     this.setLoadingState(true);
@@ -1251,15 +1230,15 @@ body {
                     
                     // Calculate responsive size based on viewport and container
                     const modalContent = target.closest('.modal-content');
-                    const availableWidth = modalContent ? modalContent.offsetWidth - 60 : window.innerWidth - 60;
+                    const availableWidth = modalContent ? modalContent.offsetWidth - 40 : window.innerWidth - 40;
                     const availableHeight = window.innerHeight - 300; // Leave space for other elements
                     
                     // Mobile-first approach: use more screen space on mobile
                     const isMobile = window.innerWidth <= 768;
                     const baseSize = isMobile ? 
                         Math.min(availableWidth, availableHeight, 350) : 
-                        Math.min(availableWidth, availableHeight, 400);
-                    const targetSize = Math.max(baseSize, isMobile ? 240 : 200); // Larger minimum for mobile
+                        Math.min(availableWidth, availableHeight, 300);
+                    const targetSize = Math.max(baseSize, isMobile ? 240 : 180); // Larger minimum for mobile
                     
                     // Set target size
                     target.style.width = targetSize + 'px';
@@ -1271,26 +1250,7 @@ body {
                         Math.max(targetSize * 0.05, 10);
                     const drawingSize = targetSize - (padding * 2);
                     
-                    // Create SVG with grid background
-                    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    svg.setAttribute('width', drawingSize);
-                    svg.setAttribute('height', drawingSize);
-                    svg.setAttribute('id', 'hanzi-svg-target');
-                    svg.style.width = drawingSize + 'px';
-                    svg.style.height = drawingSize + 'px';
-                    svg.style.border = '1px solid #eee';
-                    svg.style.borderRadius = '10px';
-                    svg.style.background = 'white';
-                    
-                    // Create grid background
-                    this.createGridBackground(svg, drawingSize);
-                    
-                    // Clear and append SVG to target
-                    target.innerHTML = '';
-                    target.appendChild(svg);
-                    
-                    // Create HanziWriter using the SVG element
-                    this.animationWriter = HanziWriter.create('hanzi-svg-target', character, {
+                    this.animationWriter = HanziWriter.create('animationTarget', character, {
                         width: drawingSize,
                         height: drawingSize,
                         padding: padding,
