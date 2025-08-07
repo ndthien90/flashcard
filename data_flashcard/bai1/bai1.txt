@@ -1,18 +1,8 @@
-你好 | nǐ hǎo | xin chào | 你好，我是学生。| nǐ hǎo, wǒ shì xuéshēng. | Xin chào, tôi là học sinh.
-老师 | lǎoshī | giáo viên | 王老师是我的汉语老师。| Wáng lǎoshī shì wǒ de Hànyǔ lǎoshī. | Thầy Vương là giáo viên tiếng Trung của tôi.
-学生 | xuéshēng | học sinh | 他是一个好学生。| Tā shì yí gè hǎo xuéshēng. | Cậu ấy là một học sinh giỏi.
-爸爸 | bàba | bố | 我爸爸是医生。| Wǒ bàba shì yīshēng. | Bố tôi là bác sĩ.
-同学 | tóngxué | bạn học | 她是我的同学。| Tā shì wǒ de tóngxué. | Cô ấy là bạn học của tôi.
-再见 | zàijiàn | tạm biệt | 我们明天见，再见！| Wǒmen míngtiān jiàn, zàijiàn! | Mai gặp nhé, tạm biệt!
-书包 | shūbāo | cặp sách | 我的书包是红色的。| Wǒ de shūbāo shì hóngsè de. | Cặp sách của tôi màu đỏ.
-医生 | yīshēng | bác sĩ | 医生在医院工作。| Yīshēng zài yīyuàn gōngzuò. | Bác sĩ làm việc ở bệnh viện.
-记者 | jìzhě | phóng viên | 她是一个电视记者。| Tā shì yí gè diànshì jìzhě. | Cô ấy là một phóng viên truyền hình.
-汉语 | Hànyǔ | tiếng Trung | 我在学习汉语。| Wǒ zài xuéxí Hànyǔ. | Tôi đang học tiếng Trung.
-中国 | Zhōngguó | Trung Quốc | 我想去中国旅行。| Wǒ xiǎng qù Zhōngguó lǚxíng. | Tôi muốn đi du lịch Trung Quốc.
-越南 | Yuènán | Việt Nam | 他来自越南。| Tā láizì Yuènán. | Anh ấy đến từ Việt Nam.
-今天 | jīntiān | hôm nay | 今天我有很多作业。| Jīntiān wǒ yǒu hěn duō zuòyè. | Hôm nay tôi có nhiều bài tập.
-汽车 | qìchē | ô tô | 这辆汽车很漂亮。| Zhè liàng qìchē hěn piàoliang. | Chiếc ô tô này rất đẹp.
-手机 | shǒujī | điện thoại di động | 我不见了我的手机。| Wǒ bú jiàn le wǒ de shǒujī. | Tôi bị mất điện thoại rồi.
-电脑 | diànnǎo | máy tính | 他的电脑是新的。| Tā de diànnǎo shì xīn de. | Máy tính của anh ấy là mới.
-谢谢 | xièxie | cảm ơn | 谢谢你的帮助。| Xièxie nǐ de bāngzhù. | Cảm ơn sự giúp đỡ của bạn.
-名字 | míngzi | tên | 你的名字是什么？| Nǐ de míngzi shì shénme? | Tên của bạn là gì?
+你|nǐ|bạn|你好。|Nǐ hǎo.|Chào bạn.
+我|wǒ|tôi|我是学生。|Wǒ shì xuésheng.|Tôi là học sinh.
+好|hǎo|tốt, khỏe|你好吗？|Nǐ hǎo ma?|Bạn khỏe không?
+很|hěn|rất|我很好。|Wǒ hěn hǎo.|Tôi rất khỏe.
+你好|nǐ hǎo|xin chào|你好，很高兴认识你。|Nǐ hǎo, hěn gāoxìng rènshì nǐ.|Chào bạn, rất vui được làm quen với bạn.
+再见|zàijiàn|tạm biệt|再见，明天见。|Zàijiàn, míngtiān jiàn.|Tạm biệt, ngày mai gặp lại.
+高兴|gāoxìng|vui, vui mừng|我很高兴。|Wǒ hěn gāoxìng.|Tôi rất vui.
+认识|rènshì|quen biết|认识你很高兴。|Rènshì nǐ hěn gāoxìng.|Rất vui được làm quen với bạn.
